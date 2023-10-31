@@ -2,12 +2,13 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 using namespace std;
 
 template <typename T>
 void generateArrayTemplate(T ar[], int n) {
 	for (int i = 0; i < n; i++) {
-		ar[i] = -40 + rand() % (50 + 40 + 1);
+		ar[i] = -40 + rand() % (91);
 	}
 }
 
@@ -20,9 +21,18 @@ R arr_sumTemplate(R ar[], int n) {
 	return sum;
 }
 
+template <typename P>
+void PrintTemplate(P * a, const int size)
+{
+	for (int i = 0; i < size; i++)
+		cout << a[i] << setw(4);
+	cout << endl;
+}
+
+
 void generateArray(int ar[], int n) {
 	for (int i = 0; i < n; i++) {
-		ar[i] = -40 + rand() % (50 + 40 + 1);
+		ar[i] = -40 + rand() % (91);
 	}
 }
 
@@ -34,6 +44,13 @@ int arr_sum(int ar[], int n) {
 	return sum;
 }
 
+void Print(int* a, const int size)
+{
+	for (int i = 0; i < size; i++)
+		cout << a[i] << setw(4);
+	cout << endl;
+}
+
 
 int main()
 {
@@ -42,21 +59,19 @@ int main()
 
 	generateArray(a, 22);
 
-	for (int i = 0; i < 22; i++) {
-		cout << a[i] << " ";
-	}
+	Print(a, 22);
+	cout << endl;
+	cout << "Sum: " << arr_sum(a, 22) << endl;
+	cout << endl;
+
+	int b[22];
+
+	generateArrayTemplate(b, 22);
+
+	PrintTemplate(b, 22);
 
 	cout << endl;
-	cout << arr_sum(a, 22) << endl;
-
-	generateArrayTemplate(a, 22);
-
-	for (int i = 0; i < 22; i++) {
-		cout << a[i] << " ";
-	}
-
-	cout << endl;
-	cout << arr_sumTemplate(a, 22) << endl;
+	cout << "Template Sum: " << arr_sumTemplate(b, 22) << endl;
 
 	return 0;
 }
